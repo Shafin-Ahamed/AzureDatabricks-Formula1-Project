@@ -13,4 +13,5 @@ I proceeded as follows
 8. After all my transformations were completed, I wrote my data to the Hive MetaStore as managed tables in parquet format. This data was written to the processed database in HMS, which also wrote them to my ADLS containers.
 9. Once my data was in the processed layer, I used Spark-SQL to perform joins, aggregations, and ranks to organize my data better. I combined many different data files to get a full picture of racing in Formula1.
 10. After organizing my data, I wrote my datasets to the presentation layer.
-11. I then used Spark-SQL to pull my data from HMS and analyze it using aggregations, ranks, and visualizations.
+11. EDIT: I decided to automate all of my notebooks into pipelines within Azure Data Factory and now I can run all of them with ease!
+12. I then used Spark-SQL to pull my data from HMS and analyze it using aggregations, ranks, and visualizations.
