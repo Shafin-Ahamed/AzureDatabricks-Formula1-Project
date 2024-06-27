@@ -1,0 +1,224 @@
+{
+	"name": "pL_f1_ingestion",
+	"properties": {
+		"activities": [
+			{
+				"name": "Circuits Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/1. Ingest Circuits File (CSV)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Races Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/2. Ingest Races File (CSV)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Constructors Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/3. Ingest Constructors (JSON)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Drivers Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/4. Drivers Ingestion (JSON)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Results Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/5. Results ingestion (JSON)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Pitstops Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/6. Pitstops Ingestion (JSON)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Laps Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/7. Laps Ingestion (CSV Folder)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Qualifying Ingestion",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Ingestion/8. Qualifying Ingestion (JSON Folder)",
+					"baseParameters": {
+						"user_input_ds": {
+							"value": "@variables('v_data_source')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"v_data_source": {
+				"type": "String",
+				"defaultValue": "Ergast API"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-06-27T14:35:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

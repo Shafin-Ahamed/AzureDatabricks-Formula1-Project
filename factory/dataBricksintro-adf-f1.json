@@ -1,0 +1,9 @@
+{
+	"name": "dataBricksintro-adf-f1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fb965681-fcc1-469e-b31f-d1c273196e03",
+		"tenantId": "6d289f1c-984c-4b28-8d18-8fd44f707569"
+	}
+}

@@ -1,0 +1,90 @@
+{
+	"name": "pL_f1_transformation",
+	"properties": {
+		"activities": [
+			{
+				"name": "Race results transformation",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Transformations/1. races_results - Joins (Main File)"
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Drivers Standings Transformation",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Race results transformation",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Transformations/2. driver_standings - Aggs and Ranks"
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Constructors Standings Transformation",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Race results transformation",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Formula1/Transformations/3. constructor_standings - Aggs and Ranks"
+				},
+				"linkedServiceName": {
+					"referenceName": "ADF_DB_Link",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"v_data_source": {
+				"type": "String",
+				"defaultValue": "Ergast API"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-06-27T01:47:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
